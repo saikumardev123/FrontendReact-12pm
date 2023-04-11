@@ -1,0 +1,20 @@
+Project: E-Commerce Application 
+
+Modules / Scope: 
+
+ Landing Page - Show Products, Show individual product
+ User Management(User) - Registration, Login, Forgot password
+ Product Management (Admin) - Add, Remove, Update, List All Products
+ Order Management -  List All Orders, addToCart- Order
+ Payment Integration(Trail) - RazorPay
+
+ Backend App: Java Application 
+
+
+Softwares: 
+
+1. Java - JDK  8 / 17 - https://www.java.com/download/ie_manual.jsp
+
+2. Eclipse  - https://www.eclipse.org/downloads/packages/ - Eclipse IDE for Enterprise Java and Web Developers
+
+3. Import the project
