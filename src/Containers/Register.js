@@ -4,6 +4,21 @@ import { register } from '../UserSlice';
 
 function Register() {
 
+    var appState = useSelector(appState => appState);
+
+    // var displayData = appState.isUserLoggedIn.value;
+
+    console.log("appState", appState);
+
+    if (appState.isUserLoggedIn.value != "hello") {
+        appState.isUserLoggedIn.then(data => {
+            console.log("data", data);
+            console.log(data.value);
+            appState.isUserLoggedIn.value = data.value
+        }
+        );
+
+    }
     const dispatch = useDispatch();
 
     const [form, setForm] = useState({
@@ -32,6 +47,7 @@ function Register() {
                 <input onChange={updateState} type="text" name="email" placeholder="email here"></input><br></br><br></br>
                 <button onClick={registerUser}>Register</button>
             </form>
+            The data, {appState.isUserLoggedIn.value}
         </>
     )
 }

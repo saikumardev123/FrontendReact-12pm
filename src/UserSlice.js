@@ -4,20 +4,35 @@ const UserSlice = createSlice(
     {
         name: 'user',
         initialState: {
-            value: false
+            value: "hello"
         },
         reducers: {
-            register: (form) => {
-                console.log("I am in action");
-                axios.post("http://localhost:9091/user/register", form).then(
-                    response => {
-                        console.log(response);
-                        return response;
-                    },
-                    error => {
-                        console.log(error)
-                    }
-                )
+            register: async (state, action) => {
+                // console.log("form", form);
+                // console.log("I am in action");
+                console.log("state", state);
+                console.log("action", action);
+                console.log("before");
+
+                const response = await axios.post("http://localhost:9091/user/register", action.payload);
+                console.log("response", response.data.statusCode);
+                if (response.data.statusCode == 200) {
+                    console.log("inside");
+                    state.value = "Registered";
+                    return state;
+                }
+
+                // axios.post("http://localhost:9091/user/register", action.payload).then(
+                //     response => {
+                //         console.log(response);
+                //         state = response;
+                //         return state;
+                //     },
+                //     error => {
+                //         console.log(error)
+                //     }
+                // )
+                // console.log("after");
             }
         },
     }
