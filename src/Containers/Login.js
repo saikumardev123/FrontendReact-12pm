@@ -1,7 +1,53 @@
+import { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { login } from '../UserSlice';
+
 function Login() {
+
+    var appState = useSelector(appState => appState);
+
+    // var displayData = appState.isUserLoggedIn.value;
+
+    console.log("appState", appState);
+
+    if (appState.isUserLoggedIn.value != "notLoggedIn") {
+        appState.isUserLoggedIn.then(data => {
+            console.log("data", data);
+            if (data.value == "loggedIn") {
+                alert("User logged In Successfully");
+            }
+            console.log(data.value);
+            appState.isUserLoggedIn.value = data.value
+        }
+        );
+
+    }
+    const dispatch = useDispatch();
+
+    const [form, setForm] = useState({
+        username: '',
+        password: '',
+    })
+    const updateState = (event) => {
+        var name = event.target.name;
+        var value = event.target.value;
+        setForm({ ...form, [name]: value });
+    }
+    const loginUser = (event) => {
+        event.preventDefault();
+        console.log(form);
+        dispatch(login(form));
+    }
     return (
         <>
-            <h1>I am in Login Page</h1>
+            <br></br><br></br>
+            <h1 style={{ textAlign: 'center' }}>Login here</h1>
+            <form style={{ textAlign: 'center' }}>
+                <input onChange={updateState} type="text" name="username" placeholder="username here"></input> <br></br><br></br>
+                <input onChange={updateState} type="text" name="password" placeholder="password here"></input><br></br><br></br>
+                <button onClick={loginUser}>Login Here</button>
+            </form>
+
         </>
     )
 }

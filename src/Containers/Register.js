@@ -10,7 +10,7 @@ function Register() {
 
     console.log("appState", appState);
 
-    if (appState.isUserLoggedIn.value != "hello") {
+    if (appState.isUserLoggedIn.value != "notLoggedIn") {
         appState.isUserLoggedIn.then(data => {
             console.log("data", data);
             console.log(data.value);
@@ -35,7 +35,6 @@ function Register() {
         event.preventDefault();
         console.log(form);
         dispatch(register(form));
-
     }
     return (
         <>
@@ -47,7 +46,7 @@ function Register() {
                 <input onChange={updateState} type="text" name="email" placeholder="email here"></input><br></br><br></br>
                 <button onClick={registerUser}>Register</button>
             </form>
-            The data, {appState.isUserLoggedIn.value}
+
         </>
     )
 }
