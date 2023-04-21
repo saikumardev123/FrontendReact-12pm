@@ -10,11 +10,10 @@ function Product() {
         "imageUrl": "",
         "quantity": 0,
         "seller": ""
+
     })
 
     var formRef = React.useRef();
-
-
 
     const [products, setProducts] = useState([]);
 

@@ -4,7 +4,8 @@ const UserSlice = createSlice(
     {
         name: 'user',
         initialState: {
-            value: "notLoggedIn"
+            value: "notLoggedIn",
+            role: "customer"
         },
         reducers: {
             register: async (state, action) => {
@@ -47,6 +48,7 @@ const UserSlice = createSlice(
                 if (response.data.statusCode == 200) {
                     console.log("inside");
                     state.value = "loggedIn";
+                    state.role = response.data.role
                     return state;
                 }
 

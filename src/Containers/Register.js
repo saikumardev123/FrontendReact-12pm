@@ -20,11 +20,11 @@ function Register() {
 
     }
     const dispatch = useDispatch();
-
     const [form, setForm] = useState({
         username: '',
         password: '',
-        email: ''
+        email: '',
+        role: 'customer'
     })
     const updateState = (event) => {
         var name = event.target.name;

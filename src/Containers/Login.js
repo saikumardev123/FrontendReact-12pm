@@ -1,29 +1,31 @@
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { login } from '../UserSlice';
+import { useNavigate } from 'react-router-dom';
 
 function Login() {
-
+    const navigate = useNavigate();
     var appState = useSelector(appState => appState);
-
-    // var displayData = appState.isUserLoggedIn.value;
-
     console.log("appState", appState);
-
     if (appState.isUserLoggedIn.value != "notLoggedIn") {
         appState.isUserLoggedIn.then(data => {
             console.log("data", data);
             if (data.value == "loggedIn") {
-                alert("User logged In Successfully");
+                if (data.role == "admin") {
+
+                    navigate("/admin");
+                }
+                else {
+
+                    navigate("/customer");
+                }
             }
             console.log(data.value);
             appState.isUserLoggedIn.value = data.value
         }
         );
-
     }
     const dispatch = useDispatch();
-
     const [form, setForm] = useState({
         username: '',
         password: '',
