@@ -44,11 +44,20 @@ function Login() {
         <>
             <br></br><br></br>
             <h1 style={{ textAlign: 'center' }}>Login here</h1>
-            <form style={{ textAlign: 'center' }}>
-                <input onChange={updateState} type="text" name="username" placeholder="username here"></input> <br></br><br></br>
-                <input onChange={updateState} type="text" name="password" placeholder="password here"></input><br></br><br></br>
-                <button onClick={loginUser}>Login Here</button>
-            </form>
+            <div class="container mt-3">
+                <form>
+                    <div class="row">
+                        <div class="col">
+                            <input onChange={updateState} placeholder="username here" type="text" class="form-control" name="username" />
+                        </div>
+                        <div class="col">
+                            <input onChange={updateState} type="password" class="form-control" placeholder="Enter password" name="password" />
+                        </div>
+                    </div>
+                    <br></br>
+                    <center><button onClick={loginUser} className="btn btn-primary">Login</button></center>
+                </form>
+            </div>
 
         </>
     )

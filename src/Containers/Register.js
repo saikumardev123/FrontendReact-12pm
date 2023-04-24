@@ -40,12 +40,25 @@ function Register() {
         <>
             <br></br><br></br>
             <h1 style={{ textAlign: 'center' }}>Register here</h1>
-            <form style={{ textAlign: 'center' }}>
-                <input onChange={updateState} type="text" name="username" placeholder="username here"></input> <br></br><br></br>
-                <input onChange={updateState} type="text" name="password" placeholder="password here"></input><br></br><br></br>
-                <input onChange={updateState} type="text" name="email" placeholder="email here"></input><br></br><br></br>
-                <button onClick={registerUser}>Register</button>
-            </form>
+            <div class="container mt-3">
+                <form>
+                    <div className="row">
+                        <div className="col">
+                            <input onChange={updateState} type="text" className="form-control" placeholder="username here" name="username" />
+                        </div>
+                        <div className="col">
+                            <input onChange={updateState} type="password" className="form-control" placeholder="Enter password" name="password" />
+                        </div>
+                        <div className="col">
+                            <input onChange={updateState} type="text" className="form-control" placeholder="Enter email" name="email" />
+                        </div>
+                    </div>
+
+                    <br></br><br></br>
+                    <center><button onClick={registerUser} className="btn btn-primary">Register</button></center>
+                </form>
+            </div>
+
 
         </>
     )

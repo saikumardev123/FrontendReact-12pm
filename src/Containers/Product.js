@@ -43,7 +43,7 @@ function Product() {
     }
     const displayProducts = () => {
         let list = products.map(product => {
-            return <tr key={product.name}> <td>{product.id} </td> <td><img style={{ width: "60px", height: "64px" }} src={product.imageUrl}></img></td> <td>{product.name}</td> <td>{product.price}</td> <td><button onClick={() => deleteProduct(product.id)}>Delete</button></td><td><button onClick={() => editProduct(product.id)}>Edit</button></td> </tr>
+            return <tr key={product.name}> <td>{product.id} </td> <td><img style={{ width: "60px", height: "64px" }} src={product.imageUrl}></img></td> <td>{product.name}</td> <td>{product.price}</td> <td><button className="btn btn-danger" onClick={() => deleteProduct(product.id)}>Delete</button></td><td><button className="btn btn-warning" onClick={() => editProduct(product.id)}>Edit</button></td> </tr>
         })
         return list;
     }
@@ -77,34 +77,57 @@ function Product() {
     return (
         <div>
             <h1 style={{ textAlign: 'center' }}>Add Product</h1>
-            <form ref={formRef} style={{ textAlign: 'center' }}>
-                <input onChange={updateState} type="text" name="name" placeholder="product name"></input> <br></br><br></br>
-                <input onChange={updateState} type="number" name="price" placeholder="price"></input><br></br><br></br>
-                <input onChange={updateState} type="text" name="description" placeholder="description here"></input><br></br><br></br>
-                <input onChange={updateState} type="text" name="imageUrl" placeholder="imageurl here"></input><br></br><br></br>
-                <input onChange={updateState} type="number" name="quantity" placeholder="quantity here"></input><br></br><br></br>
-                <input onChange={updateState} type="text" name="seller" placeholder="seller here"></input><br></br><br></br>
-                <button onClick={addProduct}>Add Product</button>
-            </form>
+
+            <div class="container mt-3">
+                <form ref={formRef}>
+                    <div className="row">
+                        <div className="col">
+                            <input onChange={updateState} type="text" className="form-control" placeholder="enter product name" name="name" />
+                        </div>
+                        <div className="col">
+                            <input onChange={updateState} type="number" className="form-control" placeholder="Enter price" name="price" />
+                        </div>
+                        <div className="col">
+                            <input onChange={updateState} type="text" className="form-control" placeholder="Enter Description" name="description" />
+                        </div>
+                    </div>
+                    <br></br>
+                    <div className="row">
+                        <div className="col">
+                            <input onChange={updateState} type="text" className="form-control" placeholder="Enter Image URL" name="imageUrl" />
+                        </div>
+                        <div className="col">
+                            <input onChange={updateState} type="number" className="form-control" placeholder="Enter quantity" name="quantity" />
+                        </div>
+                        <div className="col">
+                            <input onChange={updateState} type="text" className="form-control" placeholder="Enter Seller" name="seller" />
+                        </div>
+                    </div>
+                    <br></br><br></br>
+                    <center><button onClick={addProduct} className="btn btn-primary">Add Product</button></center>
+                </form>
+            </div>
+
 
             <hr></hr>
 
-            <table border="1" style={{ width: "100%" }}>
-                <thead>
-                    <tr>
-                        <th>Id</th>
-                        <th>Image</th>
-                        <th>Name</th>
+            <div class="container mt-3">
+                <table className="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Image</th>
+                            <th>Name</th>
+                            <th>Price</th>
+                            <th colSpan="2">Operation</th> </tr>
+                    </thead>
 
-                        <th>Price</th>
-                        <th colSpan="2">Operation</th> </tr>
-                </thead>
+                    <tbody>
+                        {displayProducts()}
+                    </tbody>
 
-                <tbody style={{ textAlign: "center" }}>
-                    {displayProducts()}
-                </tbody>
-
-            </table>
+                </table>
+            </div>
 
         </div>
     )
